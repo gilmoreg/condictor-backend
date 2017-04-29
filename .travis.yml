@@ -4,8 +4,7 @@ node_js: node
 services:
 - mongodb
 - docker
-after_success:
-  - .travis/after_success.sh
+after_success: bash ./deploy.sh
 branches:
   only:
       - master
