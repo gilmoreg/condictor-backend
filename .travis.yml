@@ -5,6 +5,7 @@ services:
 - mongodb
 - docker
 after_success:
-- docker build -t gilmoreg/condictor:0.1
-- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" registry.heroku.com
-- docker push registry.heroku.com/guarded-lowlands-58773
+  - .travis/after_success.sh
+branches:
+  only:
+      - master
