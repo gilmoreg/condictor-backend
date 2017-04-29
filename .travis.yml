@@ -4,5 +4,5 @@ services:
 - mongodb
 - docker
 after_success:
-- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" registry.heroku.com;
-- docker push registry.heroku.com/guarded-lowlands-58773;
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" registry.heroku.com
+- docker push registry.heroku.com/guarded-lowlands-58773
