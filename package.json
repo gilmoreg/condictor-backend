@@ -58,7 +58,7 @@
   },
   "scripts": {
     "start": "babel-watch server.js --inspect",
-    "test": "jest",
+    "test": "jest --verbose --bail --forceExit",
     "test-server-debug": "node --debug-brk ./node_modules/.bin/jest --verbose --runInBand --watch",
     "seed": "babel-watch ./seed/seed.js"
   },
