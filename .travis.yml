@@ -4,7 +4,5 @@ services:
 - mongodb
 - docker
 after_success:
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" registry.heroku.com;
-      docker push registry.heroku.com/guarded-lowlands-58773;
-      fi
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" registry.heroku.com;
+- docker push registry.heroku.com/guarded-lowlands-58773;
