@@ -17,7 +17,7 @@ app.use(compression({ level: 9, threshold: 0 }));
 app.use(morgan('common', { stream: logger.stream }));
 app.use(bodyParser.json());
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: ['http://localhost:3000', 'https://gilmoreg.github.io'],
   optionsSuccessStatus: 200,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: 'Accept, Origin, Content-Type, Referer',
