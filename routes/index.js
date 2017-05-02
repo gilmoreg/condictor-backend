@@ -97,7 +97,7 @@ router.use('/graphql', isAuthenticated, graphqlHTTP({
   context: { loaders },
   schema,
   rootValue: root,
-  graphiql: true,
+  graphiql: false,
 }));
 
 router.get('/logout', isAuthenticated, (req, res) => {
