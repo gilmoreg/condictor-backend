@@ -23,6 +23,13 @@ app.use(cors({
   allowedHeaders: 'Accept, Origin, Content-Type, Referer',
   credentials: true,
 }));
+
+// Log all requests
+app.use((req, res, next) => {
+  console.info(`${req.method} ${req.url} ${req.body ? JSON.stringify(req.body) : 'No body'}`);
+  next();
+});
+
 app.use(router);
 
 function runServer(databaseUrl = DATABASE_URL, port = PORT) {
@@ -33,6 +40,7 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
         return reject(err);
       }
       server = app.listen(port, () => {
+        console.log(`Your app is listening on port ${port}`);
         logger.log(`Your app is listening on port ${port}`);
         resolve();
       })
@@ -47,6 +55,7 @@ function runServer(databaseUrl = DATABASE_URL, port = PORT) {
 function closeServer() {
   return mongoose.disconnect().then(() =>
     new Promise((resolve, reject) => {
+      console.log('Closing server');
       logger.log('Closing server');
       server.close((err) => {
         if (err) {
