@@ -12,10 +12,10 @@ fi
 # Install the toolbelt, and the required plugin.
 docker login -e=$DOCKER_EMAIL -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
 docker build -f Dockerfile -t $DOCKER_IMAGE_NAME .
-- if [ ! -z "$TRAVIS_TAG" ]; then 
+if [ ! -z "$TRAVIS_TAG" ]; then 
   docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; 
-  fi 
-- if [ "$TRAVIS_BRANCH" == "master" ]; then 
+fi 
+if [ "$TRAVIS_BRANCH" == "master" ]; then 
   docker push $DOCKER_IMAGE_NAME; 
-  fi
+fi
 
