@@ -24,10 +24,6 @@ app.use(cors({
   credentials: true,
 }));
 app.use(router);
-// Express only serves static assets in production
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-}
 
 function runServer(databaseUrl = DATABASE_URL, port = PORT) {
   return new Promise((resolve, reject) => {

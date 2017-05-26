@@ -10,7 +10,12 @@ then
 fi
 
 # Install the toolbelt, and the required plugin.
-wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-heroku plugins:install heroku-container-registry
-docker login -u=$DOCKER_USERNAME -p=$HEROKU_API_KEY registry.heroku.com
-heroku container:push --app guarded-lowlands-58773
+docker login -e=$DOCKER_EMAIL -u=$DOCKER_USERNAME -p=$DOCKER_PASSWORD
+docker build -f Dockerfile -t $DOCKER_IMAGE_NAME .
+- if [ ! -z "$TRAVIS_TAG" ]; then 
+  docker tag $DOCKER_IMAGE_NAME:latest $DOCKER_IMAGE_NAME:$TRAVIS_TAG; 
+  fi 
+- if [ "$TRAVIS_BRANCH" == "master" ]; then 
+  docker push $DOCKER_IMAGE_NAME; 
+  fi
+

@@ -1,11 +1,5 @@
-FROM debian:latest
-MAINTAINER gilmoreg@live.com
-
-RUN apt-get update
-RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_7.x | bash -
-RUN apt-get install -y nodejs
-RUN apt-get clean
+FROM node:7.10
+LABEL maintainer "gilmoreg@live.com"
 
 # Prevent npm install from running unless package.json changes
 COPY ./package.json src/
